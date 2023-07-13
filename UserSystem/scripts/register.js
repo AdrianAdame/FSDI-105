@@ -43,7 +43,7 @@ function validateUser(user){
         inputFirstName.addClass("is-invalid");
     }else{
         inputFirstName.removeClass("is-invalid");
-        inputFirstName.removeClass("is-valid");
+        inputFirstName.addClass("is-valid");
     }
 
     if(user.lastName === ""){
@@ -53,7 +53,7 @@ function validateUser(user){
         inputLastName.addClass("is-invalid");
     }else{
         inputLastName.removeClass("is-invalid");
-        inputLastName.removeClass("is-valid");
+        inputLastName.addClass("is-valid");
     }
 
     if(user.age === ""){
@@ -63,7 +63,7 @@ function validateUser(user){
         inputAge.addClass("is-invalid");
     }else{
         inputAge.removeClass("is-invalid");
-        inputAge.removeClass("is-valid");
+        inputAge.addClass("is-valid");
     }
 
     if(user.email === ""){
@@ -73,7 +73,7 @@ function validateUser(user){
         inputEmail.addClass("is-invalid");
     }else{
         inputEmail.removeClass("is-invalid");
-        inputEmail.removeClass("is-valid");
+        inputEmail.addClass("is-valid");
     }
 
     if(user.password === ""){
@@ -83,7 +83,7 @@ function validateUser(user){
         inputPassword.addClass("is-invalid");
     }else{
         inputPassword.removeClass("is-invalid");
-        inputPassword.removeClass("is-valid");
+        inputPassword.addClass("is-valid");
     }
 
     user.grades.forEach((el, index) => {
@@ -94,8 +94,15 @@ function validateUser(user){
             inputUnits[index].removeClass("is-valid");
             inputUnits[index].addClass("is-invalid");
         }else{
-            inputUnits[index].removeClass("is-invalid");
-            inputUnits[index].removeClass("is-valid");
+            if(el > 4){
+
+                validate = false;
+                inputUnits[index].removeClass("is-valid");
+                inputUnits[index].addClass("is-invalid");
+            }else{
+                inputUnits[index].removeClass("is-invalid");
+                inputUnits[index].removeClass("is-valid");
+            }
         }
     })
 
@@ -113,12 +120,25 @@ function register() {
 }
 
 function clearForm(){
-    inputFirstName.val("");
-    inputLastName.val("");
-    inputAge.val("");
-    inputEmail.val("");
-    inputPassword.val("");
-    inputUnits.map(el => el.val(""));
+    inputFirstName.removeClass("is-valid");
+    inputFirstName.removeClass("is-invalid");
+    
+    inputLastName.removeClass("is-valid");
+    inputLastName.removeClass("is-invalid");
+    
+    inputAge.removeClass("is-valid");
+    inputAge.removeClass("is-invalid");
+    
+    inputEmail.removeClass("is-valid");
+    inputEmail.removeClass("is-invalid");
+    
+    inputPassword.removeClass("is-valid");
+    inputPassword.removeClass("is-invalid");
+    
+    inputUnits.map(el => {
+        el.removeClass("is-valid");
+        el.removeClass("is-invalid");
+    });
 }
 
 function init() {

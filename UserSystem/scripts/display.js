@@ -5,17 +5,21 @@ function displayUsers(userArray){
 
     userArray.map((user, index)=> {
         let tr = `
-        <tr>
+        <tr id=user-${index}>
             <td>${user.email}</td>
             <td>${user.firstName + " " +user.lastName}</td>
             <td>${user.age}</td>
             ${user.grades.map(grade => {
                 return `<td>${grade}</td>`
             })}
-            <td>${user.gpa}</td>
+            <td>${Number(user.gpa).toFixed(2)}</td>
         </tr>`
 
         TBODY.append(tr)
+
+        if(user.gpa < 2){
+            $(`#user-${index} td`).addClass("table-danger")
+        }
     })
 }
 
