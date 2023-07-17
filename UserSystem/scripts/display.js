@@ -17,7 +17,7 @@ function displayUsers(userArray){
 
         TBODY.append(tr)
 
-        if(user.gpa < 2){
+        if(user.gpa <= 2){
             $(`#user-${index} td`).addClass("table-danger")
         }
     })

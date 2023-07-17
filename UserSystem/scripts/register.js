@@ -87,8 +87,7 @@ function validateUser(user){
     }
 
     user.grades.forEach((el, index) => {
-        console.log(el)
-        if(el === NaN){
+        if(!el){
             validate = false;
 
             inputUnits[index].removeClass("is-valid");
@@ -101,7 +100,7 @@ function validateUser(user){
                 inputUnits[index].addClass("is-invalid");
             }else{
                 inputUnits[index].removeClass("is-invalid");
-                inputUnits[index].removeClass("is-valid");
+                inputUnits[index].addClass("is-valid");
             }
         }
     })
@@ -139,6 +138,8 @@ function clearForm(){
         el.removeClass("is-valid");
         el.removeClass("is-invalid");
     });
+
+    $("input").val("")
 }
 
 function init() {
